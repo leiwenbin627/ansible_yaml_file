@@ -1,0 +1,5 @@
+- hosts: webserver
+  remote_user: root
+  tasks:
+  - name: copy file
+    copy: content="{{ansible_date_time}},{{testvar}}" dest=/tmp/var.ansible

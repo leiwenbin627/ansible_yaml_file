@@ -1,0 +1,11 @@
+- name: install mysql-server package
+  yum: name=mariadb state=latest
+- name: install confiuration file
+  copy: src=my.cnf dest=/etc/my.cnf
+  tags:
+  - myconf
+  notify:
+  - restart mariadb
+- name: start mariadb
+  service: name=mariadb enabled=true state=started
+

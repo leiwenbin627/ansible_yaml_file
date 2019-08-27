@@ -1,0 +1,13 @@
+- hosts: all
+  remote_user: root
+  vars:
+    username: user10
+  tasks:
+    - name: create {{username}} user
+      user: name={{username}}
+      when: ansible_fqdn == "node02"
+    - name: add several users
+      user: name={{item}} state=present groups=wheel
+      with_items:
+        - testuser1
+        - testuser2 

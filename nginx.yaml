@@ -1,0 +1,13 @@
+- hosts: webserver
+  remote_user: root
+  tasks:
+  - name: create nginx group
+    group: name=testgroup gid=515 system=yes
+  - name: create nginx user
+    user: name=testgroup  uid=515 group=testgroup system=yes
+- hosts: dbserver
+  remote_user: root
+  tasks:
+  - name: copy file to dbserver
+    copy: src=/etc/inittab dest=/tmp/inittab.ansible
+    ignore_errors: True

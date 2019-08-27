@@ -1,0 +1,8 @@
+- hosts: 192.168.85.120
+  remote_user: root
+  roles:
+  - webserver
+- hosts: 192.168.85.130
+  remote_user: root
+  roles:
+  - dbserver
